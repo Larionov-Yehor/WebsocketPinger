@@ -23,18 +23,18 @@ public class SocketHandler extends TextWebSocketHandler {
         Map value = new Gson().fromJson(message.getPayload(), Map.class);
         session.sendMessage(new TextMessage("Hello " + value.get("type") + " !"));
 
-        System.console().writer().println("Message received:" + message.getPayload());
+        System.out.println("Message received:" + message.getPayload());
     }
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        System.console().writer().println("Connection established");
+        System.out.println("Connection established");
         sessions.add(session);
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        System.console().writer().println("Connection closed");
+        System.out.println("Connection closed");
         sessions.remove(session);
     }
 }
